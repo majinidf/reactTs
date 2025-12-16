@@ -1,0 +1,9 @@
+.publishFiles-container .is-planned {color: #666}
+.publishFiles-container .is-inProgress {color: #1e90ff}
+.publishFiles-container .is-qa {color: #e05301}
+.publishFiles-container .is-blocked {color: #ff1100}
+.publishFiles-container .is-done {color: #02cf09}
+
+.level_2 {padding-left: calc(1*24px);;}
+.level_3 {padding-left: calc(2*24px);}
+.level_4 {padding-left: calc(3*24px);}
