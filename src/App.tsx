@@ -1,6 +1,6 @@
 //import { useState } from 'react'
 //import './assets/css/publishFiles.module.css';
-import './assets/css/publishFiles.css';
+import './assets/css/publishFiles.scss';
 
 // types/status.ts
 export type StatusType =
@@ -11,7 +11,6 @@ export type StatusType =
   | 'Done';
 
 export interface FILE_ITEM {
-  id: number;
   title: string;
   level: number;
   url?: string;
@@ -32,40 +31,44 @@ export const FILE_LIST_DATA: FILE_LIST_TYPE[] = [
     category: 'Common',
     list: [
       {
-        id: 1,
         title: 'Home',
         level: 1,
         url: '/index.html',
         status: 'Done',
-        completedDate: '2025-12-10',
-        lastUpdate: '2025-12-15',
+        completedDate: '25/12/10',
+        lastUpdate: '25/12/15',
         note: ''
       },
       {
-        id: 2,
         title: 'Products',
         level: 1,
         url: '/products/index.html',
         status: 'In Progress',
-        lastUpdate: '2025-12-15',
+        lastUpdate: '25/12/15',
         note: 'PC 마크업 완료'
       },
       {
-        id: 3,
         title: 'Detail',
         level: 2,
         url: '/products/detail.html',
-        status: 'QA',
-        lastUpdate: '2025-12-15',
+        status: 'Planned',
+        lastUpdate: '25/12/15',
         note: '접근성 점검 필요'
       },
       {
-        id: 4,
+        title: 'Edit',
+        level: 2,
+        url: '/products/edit.html',
+        status: 'QA',
+        lastUpdate: '25/12/15',
+        note: 'PC 마크업 완료'
+      },
+      {
         title: 'Review Write',
         level: 3,
         url: '/products/detail/review/write.html',
         status: 'Blocked',
-        lastUpdate: '2025-12-14',
+        lastUpdate: '25/12/14',
         note: 'API 미확정'
       }
     ],
@@ -74,40 +77,36 @@ export const FILE_LIST_DATA: FILE_LIST_TYPE[] = [
     category: 'Home',
     list: [
       {
-        id: 1,
         title: 'Home',
         level: 1,
         url: '/index.html',
         status: 'Done',
-        completedDate: '2025-12-10',
-        lastUpdate: '2025-12-15',
+        completedDate: '25/12/10',
+        lastUpdate: '25/12/15',
         note: ''
       },
       {
-        id: 2,
         title: 'Products',
         level: 1,
         url: '/products/index.html',
         status: 'In Progress',
-        lastUpdate: '2025-12-15',
+        lastUpdate: '25/12/15',
         note: 'PC 마크업 완료'
       },
       {
-        id: 3,
         title: 'Detail',
         level: 2,
         url: '/products/detail.html',
         status: 'QA',
-        lastUpdate: '2025-12-15',
+        lastUpdate: '25/12/15',
         note: '접근성 점검 필요'
       },
       {
-        id: 4,
         title: 'Review Write',
         level: 3,
         url: '/products/detail/review/write.html',
         status: 'Blocked',
-        lastUpdate: '2025-12-14',
+        lastUpdate: '25/12/14',
         note: 'API 미확정'
       }
     ],
@@ -139,7 +138,7 @@ const PublishFiles = () => {
 
   return (
     <div className="publishFiles-container">
-      <h1>Publish Files</h1>
+      <h1 className="publishFiles-mtitle">Publish Files</h1>
 
       {FILE_LIST_DATA.map(cate => (
         <section className="publishFiles-wrapper">
@@ -148,8 +147,18 @@ const PublishFiles = () => {
           </h2>
 
           <table className="publishFiles-table">
+            <colgroup>
+              {/* <col className="col_0" /> */}
+              <col className="col_1" />
+              <col className="col_2" />
+              <col className="col_3" />
+              <col className="col_4" />
+              <col className="col_5" />
+              <col className="col_6" />
+            </colgroup>
             <thead>
               <tr>
+                {/* <th>Num</th> */}
                 <th>Title</th>
                 {/* <th>Level</th> */}
                 <th>URL</th>
@@ -161,11 +170,11 @@ const PublishFiles = () => {
             </thead>
 
             <tbody>
-              {cate.list.map(item => (
-                <tr key={item.id} data-status={item.status}>
+              {cate.list.map((item, idx) => (
+                <tr key={idx} data-status={item.status}>
+                  {/* <td>{idx+1}</td> */}
                   <td
                     className={`title level_${item.level}`}
-                    style={{ paddingLeft: `${(item.level - 1) * 24}px` }}
                   >
                     {item.title}
                   </td>
@@ -175,8 +184,8 @@ const PublishFiles = () => {
                       {item.url}
                     </a>
                   </td>
-                  <td className={STATUS_COLOR[item.status]}>
-                    {item.status}
+                  <td className="item-status">
+                    <span className={STATUS_COLOR[item.status]}>{item.status}</span>
                   </td>
                   <td>{item.completedDate ?? '-'}</td>
                   <td>{item.lastUpdate}</td>

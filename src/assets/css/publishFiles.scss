@@ -1,0 +1,93 @@
+$primary-color: #7664CA;
+$primary-light-color: #fff;
+
+body {
+  color: #464857;
+  background: #F2F2FC;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.publishFiles-container {
+  .item-status {
+    > span {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 90%;
+      height: 15px;
+      padding: 2px 5px;
+      font-size: 11px;
+      color: $primary-light-color;
+      font-weight: 700;
+      border-radius: 30px;
+    }
+
+    .is-planned {background-color: #666}
+    .is-inProgress {background-color: #461dff}
+    .is-qa {background-color: #ff5e00}
+    .is-blocked {background-color: #ff0055}
+    .is-done {background-color: #13cf02}
+  }
+
+  .level_2 {padding-left: calc(1*10px);;}
+  .level_3 {padding-left: calc(2*10px);}
+  .level_4 {padding-left: calc(3*10px);}
+
+  .publishFiles-mtitle {
+    padding: 30px;
+    margin-bottom: 50px;
+    color: $primary-light-color;
+    background: $primary-color;
+  }
+  .publishFiles-wrapper {
+    padding: 0 30px;
+  }
+}
+
+.publishFiles-table {
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  .col_1, 
+  .col_2 {width: auto;}
+  .col_3 {width: 10%;}
+  .col_4 {width: 15%;}
+  .col_5 {width: 15%;}
+  .col_6 {width: 20%;}
+
+  thead {
+    tr {
+      background: #EFEFEF;
+    }
+    th {
+      height: 54px;
+      padding: 0 20px;
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        background: #FAFBFF;
+      }
+      &:nth-child(even) {
+        background: #fff;
+      }
+    }
+
+    td {
+      height: 45px;
+      padding: 10px;
+      font-size: 14px;
+      text-align: center;
+
+      &:last-child {
+        text-align: left;
+      }
+    }
+  }
+}
