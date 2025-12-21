@@ -2,7 +2,6 @@
 //import './assets/css/publishFiles.module.css';
 import './assets/css/publishFiles.scss';
 
-// types/status.ts
 export type StatusType =
   | 'Planned'
   | 'In Progress'
